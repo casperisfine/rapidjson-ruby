@@ -1,3 +1,4 @@
+$LOAD_PATH.unshift("/Users/byroot/src/github.com/casperisfine/json/ext")
 require "benchmark/ips"
 require "json"
 require "oj"
@@ -17,10 +18,10 @@ end
 def implementations(ruby_obj)
   {
     json: ["json", proc { JSON.dump(ruby_obj) }],
-    yajl: ["yajl", proc { Yajl::Encoder.new.encode(ruby_obj) }],
+    # yajl: ["yajl", proc { Yajl::Encoder.new.encode(ruby_obj) }],
     oj: ["oj", proc { Oj.dump(ruby_obj) }],
-    rapidjson: ["rapidjson", proc { RapidJSON.dump(ruby_obj) }],
-    rapidjson_gem: ["rapidjson-gem", proc { RapidJSON::JSONGem.dump(ruby_obj) }],
+    # rapidjson: ["rapidjson", proc { RapidJSON.dump(ruby_obj) }],
+    # rapidjson_gem: ["rapidjson-gem", proc { RapidJSON::JSONGem.dump(ruby_obj) }],
   }
 end
 
@@ -47,6 +48,12 @@ def benchmark_encoding(benchmark_name, ruby_obj, check_expected: true)
   end
   puts
 end
+#
+# data = JSON.load_file("#{__dir__}/../test/data/twitter.json")
+# # puts JSON.dump(data)
+# 10_000.times do
+#   JSON.dump(data)
+# end
 
 benchmark_encoding "small nested array", [[1,2,3,4,5]]*10
 benchmark_encoding "small hash", { "username" => "jhawthorn", "id" => 123, "event" => "wrote json serializer" }
