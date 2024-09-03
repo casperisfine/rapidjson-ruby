@@ -49,15 +49,15 @@ def benchmark_encoding(benchmark_name, ruby_obj, check_expected: true)
   puts
 end
 #
-# data = JSON.load_file("#{__dir__}/../test/data/twitter.json")
-# # puts JSON.dump(data)
-# 10_000.times do
-#   JSON.dump(data)
-# end
+data = JSON.load_file("#{__dir__}/../test/data/twitter.json")
+# puts JSON.dump(data)
+10_000.times do
+  JSON.dump(data)
+end
 
-benchmark_encoding "small nested array", [[1,2,3,4,5]]*10
-benchmark_encoding "small hash", { "username" => "jhawthorn", "id" => 123, "event" => "wrote json serializer" }
-benchmark_encoding "twitter.json", JSON.load_file("#{__dir__}/../test/data/twitter.json")
-benchmark_encoding "citm_catalog.json", JSON.load_file("#{__dir__}/../test/data/citm_catalog.json")
-benchmark_encoding "canada.json", JSON.load_file("#{__dir__}/../test/data/canada.json"), check_expected: false
-benchmark_encoding "many #to_json calls", [{Object.new => Object.new, 12 => 54.3, Integer => Float, Time.now => Date.today}] * 20
+# benchmark_encoding "small nested array", [[1,2,3,4,5]]*10
+# benchmark_encoding "small hash", { "username" => "jhawthorn", "id" => 123, "event" => "wrote json serializer" }
+# benchmark_encoding "twitter.json", JSON.load_file("#{__dir__}/../test/data/twitter.json")
+# benchmark_encoding "citm_catalog.json", JSON.load_file("#{__dir__}/../test/data/citm_catalog.json")
+# benchmark_encoding "canada.json", JSON.load_file("#{__dir__}/../test/data/canada.json"), check_expected: false
+# benchmark_encoding "many #to_json calls", [{Object.new => Object.new, 12 => 54.3, Integer => Float, Time.now => Date.today}] * 20

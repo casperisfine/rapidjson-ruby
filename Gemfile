@@ -15,5 +15,5 @@ group :benchmark do
   gem "benchmark-ips"
   gem "oj"
   gem "yajl-ruby"
-  gem "json", path: "/Users/byroot/src/github.com/casperisfine/json"
+  gem "json"
 end
